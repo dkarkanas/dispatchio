@@ -104,7 +104,8 @@ public sealed class EventPublisher(
 
         // Every implemented interface that is (or derives from) INotification.
         notificationTypes.AddRange(
-            notificationType.GetInterfaces().Where(i => typeof(INotification).IsAssignableFrom(i))
+            notificationType.GetInterfaces()
+                .Where(i => i != typeof(INotification) && typeof(INotification).IsAssignableFrom(i))
         );
 
         return
