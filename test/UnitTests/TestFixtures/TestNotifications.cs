@@ -61,3 +61,49 @@ public sealed class CancellationAwareHandler : INotificationHandler<SampleNotifi
         return Task.CompletedTask;
     }
 }
+
+// --- Polymorphic dispatch fixtures -----------------------------------------------------------
+
+/// <summary>Marker interface used to test dispatch to interface-based handlers.</summary>
+public interface IAuditableNotification : INotification;
+
+public record BaseUserNotification(string UserName) : INotification;
+
+public sealed record UserRegisteredNotification(string UserName) : BaseUserNotification(UserName), IAuditableNotification;
+
+/// <summary>Handles only the concrete <see cref="UserRegisteredNotification"/> type.</summary>
+public sealed class UserRegisteredHandler : INotificationHandler<UserRegisteredNotification>
+{
+    public List<string> Received { get; } = new();
+
+    public Task HandleAsync(UserRegisteredNotification notification, CancellationToken cancellationToken = default)
+    {
+        Received.Add(notification.UserName);
+        return Task.CompletedTask;
+    }
+}
+
+/// <summary>Handles the base class — only invoked when polymorphic dispatch is enabled.</summary>
+public sealed class BaseUserNotificationHandler : INotificationHandler<BaseUserNotification>
+{
+    public List<string> Received { get; } = new();
+
+    public Task HandleAsync(BaseUserNotification notification, CancellationToken cancellationToken = default)
+    {
+        Received.Add(notification.UserName);
+        return Task.CompletedTask;
+    }
+}
+
+/// <summary>Handles the marker interface — only invoked when polymorphic dispatch is enabled.</summary>
+public sealed class AuditHandler : INotificationHandler<IAuditableNotification>
+{
+    public List<Type> Received { get; } = new();
+
+    public Task HandleAsync(IAuditableNotification notification, CancellationToken cancellationToken = default)
+    {
+        Received.Add(notification.GetType());
+        return Task.CompletedTask;
+    }
+}
+

@@ -4,7 +4,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
-        <VersionPrefix>1.0.0</VersionPrefix>
+        <VersionPrefix>1.1.0</VersionPrefix>
         <Authors>Dimitris Karkanas</Authors>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <CheckEolTargetFramework>false</CheckEolTargetFramework>
@@ -16,7 +16,7 @@
         <PackageTags>mediator;notifications;events;in-process;messaging;di;dispatching</PackageTags>
         <IsPackable>true</IsPackable>
         <PackageIcon>logo.png</PackageIcon>
-        <PackageProjectUrl>https://dkarkanas.github.io/dispatchio</PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/dkarkanas/dispatchio</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageReleaseNotes>See https://github.com/dkarkanas/dispatchio/blob/develop/CHANGELOG.md for release notes.</PackageReleaseNotes>
         <RepositoryType>git</RepositoryType>

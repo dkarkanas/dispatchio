@@ -14,6 +14,7 @@ public sealed class EventBusOptions
     internal List<Assembly> AssembliesToScan { get; } = [];
     internal Type StrategyType { get; private set; } = typeof(ForeachAwaitPublishStrategy);
     internal ServiceLifetime HandlerLifetime { get; private set; } = ServiceLifetime.Transient;
+    internal bool PolymorphicDispatchEnabled { get; private set; }
 
     /// <summary>
     /// Scans the assembly containing <typeparamref name="TMarker"/> for
@@ -55,6 +56,18 @@ public sealed class EventBusOptions
     public EventBusOptions WithHandlerLifetime(ServiceLifetime lifetime)
     {
         HandlerLifetime = lifetime;
+        return this;
+    }
+
+    /// <summary>
+    /// Enables polymorphic dispatch: when a notification is published, handlers registered for its
+    /// base notification types and implemented notification interfaces are invoked as well,
+    /// not only handlers for the exact runtime type. Disabled by default.
+    /// </summary>
+    /// <param name="enabled">Whether polymorphic dispatch should be enabled.</param>
+    public EventBusOptions EnablePolymorphicDispatch(bool enabled = true)
+    {
+        PolymorphicDispatchEnabled = enabled;
         return this;
     }
 }

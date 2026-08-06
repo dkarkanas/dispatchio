@@ -44,7 +44,12 @@ public static class ServiceCollectionExtensions
         // Publisher itself is scoped: in ASP.NET Core / generic host this ties handler resolution
         // to the same DI scope as whatever triggered the publish (e.g. same request, same
         // DbContext instance) instead of silently spinning up a fresh root-provider scope.
-        services.AddScoped<IEventPublisher, EventPublisher>();
+        services.AddScoped<IEventPublisher>(sp => new EventPublisher(
+            sp,
+            sp.GetRequiredService<IPublishStrategy>(),
+            options.PolymorphicDispatchEnabled)
+        );
+
         services.AddSingleton(typeof(IPublishStrategy), options.StrategyType);
 
         RegisterHandlers(services, options);
@@ -61,11 +66,13 @@ public static class ServiceCollectionExtensions
             // Skip private nested types: they are implementation details of their declaring type
             // (e.g. test helpers) and are not intended to be discovered by assembly scanning.
             var candidateTypes = assembly.GetTypes()
-                .Where(type => type is { IsAbstract: false, IsInterface: false, IsGenericTypeDefinition: false, IsNestedPrivate: false });
+                .Where(type => type is
+                    {IsAbstract: false, IsInterface: false, IsGenericTypeDefinition: false, IsNestedPrivate: false});
 
             foreach (var type in candidateTypes)
             {
-                var implementedInterfaces = type.GetInterfaces()
+                var implementedInterfaces = type
+                    .GetInterfaces()
                     .Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == handlerInterfaceType);
 
                 foreach (var handlerInterface in implementedInterfaces)

@@ -1,4 +1,6 @@
 using BenchmarkDotNet.Running;
 using Dispatchio.Benchmark;
 
-BenchmarkRunner.Run<PublishBenchmarks>();
+BenchmarkSwitcher
+    .FromAssembly(typeof(PublishBenchmarks).Assembly)
+    .Run(args);
