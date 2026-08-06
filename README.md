@@ -1,4 +1,12 @@
-﻿# Dispatchio
+[![NuGet](https://img.shields.io/nuget/vpre/Dispatchio.svg)](https://www.nuget.org/packages/Dispatchio/) 
+[![Publish to NuGet](https://github.com/dkarkanas/dispatchio/actions/workflows/nuget-publish.yml/badge.svg)](https://github.com/dkarkanas/dispatchio/actions/workflows/nuget-publish.yml)
+[![CodeQL](https://github.com/dkarkanas/dispatchio/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/dkarkanas/dispatchio/actions/workflows/github-code-scanning/codeql)
+[![pages-build-deployment](https://github.com/dkarkanas/dispatchio/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/dkarkanas/dispatchio/actions/workflows/pages/pages-build-deployment)
+
+
+
+ 
+ # Dispatchio
 <img src="icon/logo.svg" alt="Dispatchio logo" width="200" />
 
 A lightweight in-process notification dispatcher for .NET — a drop-in replacement for MediatR's
