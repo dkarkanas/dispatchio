@@ -11,7 +11,7 @@ namespace Dispatchio.Benchmark;
 /// and compares:
 ///  - Dispatchio with polymorphic dispatch disabled (exact-type, reflection-free fast path),
 ///  - Dispatchio with polymorphic dispatch enabled (runtime-type + base class + interface handlers),
-///  - MediatR (which resolves by the compile-time notification type).
+///  - MediatR (reference baseline).
 /// Note: handler *work* per publish differs by design — the polymorphic run also invokes the
 /// base-class and interface handlers, which is exactly the overhead being measured.
 /// </summary>
