@@ -58,8 +58,10 @@ public static class ServiceCollectionExtensions
 
         foreach (var assembly in options.AssembliesToScan)
         {
+            // Skip private nested types: they are implementation details of their declaring type
+            // (e.g. test helpers) and are not intended to be discovered by assembly scanning.
             var candidateTypes = assembly.GetTypes()
-                .Where(type => type is { IsAbstract: false, IsInterface: false, IsGenericTypeDefinition: false });
+                .Where(type => type is { IsAbstract: false, IsInterface: false, IsGenericTypeDefinition: false, IsNestedPrivate: false });
 
             foreach (var type in candidateTypes)
             {
