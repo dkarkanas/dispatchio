@@ -10,6 +10,10 @@ fire-and-forget notifications only.
 > intended as a MediatR replacement for small projects or workloads without heavy business
 > requirements. Use it at your own discretion, test thoroughly, and please report any issues.
 
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a list of notable changes in each release.
+
 ## Install
 
 ```bash
