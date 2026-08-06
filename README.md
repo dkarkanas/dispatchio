@@ -119,4 +119,4 @@ request on [GitHub](https://github.com/dkarkanas/dispatchio).
 
 ## License
 
-Dispatchio is licensed under the [MIT License](LICENSE.txt).
+Dispatchio is licensed under the [MIT License](LICENSE).
