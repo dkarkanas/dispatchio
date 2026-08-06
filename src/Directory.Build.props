@@ -18,7 +18,7 @@
         <PackageIcon>logo.png</PackageIcon>
         <PackageProjectUrl>https://github.com/dkarkanas/dispatchio</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageReleaseNotes>See https://github.com/dkarkanas/dispatchio/blob/main/CHANGELOG.md for release notes.</PackageReleaseNotes>
+        <PackageReleaseNotes>See https://github.com/dkarkanas/dispatchio/blob/develop/CHANGELOG.md for release notes.</PackageReleaseNotes>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/dkarkanas/dispatchio</RepositoryUrl>
       <PublishRepositoryUrl>true</PublishRepositoryUrl>
