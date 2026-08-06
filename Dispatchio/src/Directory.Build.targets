@@ -1,0 +1,20 @@
+﻿<Project>
+    <PropertyGroup>
+        <NoWarn>$(NoWarn);AD0001</NoWarn>
+        <AnalysisMode>Recommended</AnalysisMode>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Include="..\..\icon\logo.png" Pack="true" Visible="false" PackagePath="\" />
+        <None Include="..\..\README.md" Pack="true" Visible="false" PackagePath="\" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.301" PrivateAssets="All" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="SonarAnalyzer.CSharp" Version="10.18.0.131500">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+</Project>

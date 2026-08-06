@@ -1,0 +1,29 @@
+﻿<Project>
+    <PropertyGroup Label="Assembly Common">
+        <TargetFrameworks>netstandard2.0;net8.0;net9.0;net10.0</TargetFrameworks>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
+        <VersionPrefix>1.0.0-beta01</VersionPrefix>
+        <Authors>Dimitris Karkanas</Authors>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <CheckEolTargetFramework>false</CheckEolTargetFramework>
+    </PropertyGroup>
+    <PropertyGroup Label="Package Common">
+        <PackageId>Dispatchio</PackageId>
+        <Description>Lightweight in-process notification dispatcher for .NET</Description>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageTags>mediator;notifications;events;in-process;messaging;di;dispatching</PackageTags>
+        <IsPackable>true</IsPackable>
+        <PackageIcon>logo.png</PackageIcon>
+        <PackageProjectUrl>https://github.com/dkarkanas/dispatchio</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/dkarkanas/dispatchio</RepositoryUrl>
+      <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+    </PropertyGroup>
+</Project>

@@ -1,0 +1,21 @@
+<Solution>
+  <Folder Name="/benchmark/">
+    <Project Path="benchmark/Dispatchio.Benchmark/Dispatchio.Benchmark.csproj" />
+  </Folder>
+  <Folder Name="/misc/">
+    <File Path=".github/workflows/nuget-publish.yml" />
+    <File Path=".gitignore" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/samples/">
+    <Project Path="samples/Dispatchio.SampleConsole/Dispatchio.SampleConsole.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <File Path="src/Directory.Build.props" />
+    <File Path="src/Directory.Build.targets" />
+    <Project Path="src/Dispatchio/Dispatchio.csproj" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/UnitTests/UnitTests.csproj" />
+  </Folder>
+</Solution>

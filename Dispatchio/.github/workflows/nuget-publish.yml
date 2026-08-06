@@ -1,0 +1,45 @@
+﻿name: "Publish Dispatchio to NuGet"
+
+on:
+  workflow_dispatch:
+  # push:
+  #   tags: [ "v*" ]   # optionally publish on version tags
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write   # required for OIDC token exchange
+      contents: read
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore
+        run: dotnet restore test/UnitTests/UnitTests.csproj
+
+      - name: Build
+        run: |
+          dotnet build src/Dispatchio/Dispatchio.csproj --no-restore -c Release
+          dotnet build test/UnitTests/UnitTests.csproj --no-restore -c Release
+
+      - name: Test
+        run: dotnet test test/UnitTests/UnitTests.csproj --no-build -c Release
+
+      - name: Pack
+        run: dotnet pack src/Dispatchio/Dispatchio.csproj --no-restore --no-build -c Release -o ./artifacts
+
+      - name: NuGet login (Trusted Publishing)
+        uses: NuGet/login@v1
+        id: nuget-login
+        with:
+          user: d.karkanas
+
+      - name: Push to NuGet
+        run: dotnet nuget push ./artifacts/Dispatchio*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_AUTH_TOKEN }} --skip-duplicate
