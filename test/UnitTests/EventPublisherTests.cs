@@ -7,6 +7,7 @@ using UnitTests.TestFixtures;
 
 namespace UnitTests;
 
+[Trait("Area", "EventPublisher")]
 public class EventPublisherTests
 {
     private static IServiceProvider BuildProvider(Action<IServiceCollection> configure)
